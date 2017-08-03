@@ -1,7 +1,10 @@
-import React from 'react'
-import { push } from 'react-router-redux'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
+import React from 'react';
+import { push } from 'react-router-redux';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import isEmpty from 'lodash/isEmpty';
+
 import {
   increment,
   incrementAsync,
@@ -15,40 +18,60 @@ class Home extends React.PureComponent {
 
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      error: ''
     }
   }
-  onEmailChange(event) {
+  onEmailChange = (event) => {
     this.setState({
       email: event.target.value
     });
   }
 
-  onPasswordChange(event) {
+  onPasswordChange = (event) => {
     this.setState({
       password: event.target.value
     });
   }
   
-  onFormSubmit() {
-
-  }
-  
-  render() {
+  validateForm = () => {
     const { email, password } = this.state;
+    if (isEmpty(email)) return 'Email is Empty'
+
+    if (isEmpty(password)) return 'Password Cannot be empty'
+
+    if (email !== 'user') return 'userName is incorrect';
+
+    if (password !== 'password') return 'password is incorrect';
+
+    return '';
+  }
+
+  onFormSubmit = (event) => {
+    event.preventDefault();
+    
+      const error = this.validateForm();
+      this.setState({ error }, () => {
+        if (!error) this.props.changePage();
+      });
+  }
+
+  render() {
+    const { email, password, error } = this.state;
     return (
       <div className="container">
         <form onSubmit={this.onFormSubmit}>
 
           <div class="form-group">
-            <label for="email">Email address</label>
-            <input type="email" className="form-control" value={email} placeholder="Enter email" onChange={this.onEmailChange}/>
+            <label for="email">username</label>
+            <input type="text" className="form-control" value={email} placeholder="Username" onChange={this.onEmailChange}/>
           </div>
           <div class="form-group">
             <label for="password">Password</label>
             <input type="password" className="form-control" value={password} placeholder="Password" onChange={this.onPasswordChange}/>
           </div>
         <input type="submit" className="btn btn-primary" />
+        <div>{error}</div>
       </form>
       </div>
       
