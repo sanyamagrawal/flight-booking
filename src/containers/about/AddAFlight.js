@@ -21,14 +21,7 @@ class AddAFlight extends React.PureComponent {
 
   onFormSubmit = (event) => {
     event.preventDefault();
-    
-    this.setState = ({
-      to: '',
-      fromA: '',
-      departureTime: '',
-      landingTime:'',
-    });
-    
+  
     this.props.addFlightRow(this.state);
   }
 
