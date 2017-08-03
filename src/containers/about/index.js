@@ -40,8 +40,6 @@ class About extends React.PureComponent {
   }
 
   render() {
-    
-
     return (
       <div className="container">
         <input type="button" onClick={this.onAddNewFlightForm} />

@@ -71,15 +71,19 @@ class Home extends React.PureComponent {
             <input type="password" className="form-control" value={password} placeholder="Password" onChange={this.onPasswordChange}/>
           </div>
           <input type="submit" className="btn btn-primary" />
-          <div className="alert alert-success" role="alert">
-            {error}
-          </div>
+          {this.renderError(error)}
         </div>
           
       </form>
       </div>
       
     );
+  }
+
+  renderError(error) {
+    if(error) return <div className="alert alert-error" role="alert">
+            {error}
+          </div>
   }
 }
 
