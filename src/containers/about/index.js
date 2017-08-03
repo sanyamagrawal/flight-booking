@@ -1,10 +1,22 @@
 import React from 'react'
 
-const About = () => (
-  <div>
-    <h1>About Page</h1>
-    <p>Did you get here via Redux?</p>
-  </div>
-)
+class About extends React.PureComponent {
+  render() {
+    return (
+      <div>
+        <table>
+          <th>
+            <tr>From</tr>
+            <tr>To</tr>
+            <tr>departureTime</tr>
+            <tr>landingTime</tr>
+            <tr>price</tr>
+          </th>
+          
+        </table>
+      </div>
+    );
+  }
+}
 
 export default About

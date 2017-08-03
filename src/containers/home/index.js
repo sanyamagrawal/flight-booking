@@ -59,19 +59,21 @@ class Home extends React.PureComponent {
   render() {
     const { email, password, error } = this.state;
     return (
-      <div className="container">
-        <form onSubmit={this.onFormSubmit}>
-
-          <div class="form-group">
+      <div className="container col-md-12">
+        <form onSubmit={this.onFormSubmit} className="col-md-4 card">
+        <div className="card-block">
+          <div className="form-group">
             <label for="email">username</label>
             <input type="text" className="form-control" value={email} placeholder="Username" onChange={this.onEmailChange}/>
           </div>
-          <div class="form-group">
+          <div className="form-group">
             <label for="password">Password</label>
             <input type="password" className="form-control" value={password} placeholder="Password" onChange={this.onPasswordChange}/>
           </div>
         <input type="submit" className="btn btn-primary" />
         <div>{error}</div>
+        </div>
+          
       </form>
       </div>
       
