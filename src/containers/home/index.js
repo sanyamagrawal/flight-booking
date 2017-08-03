@@ -70,8 +70,10 @@ class Home extends React.PureComponent {
             <label for="password">Password</label>
             <input type="password" className="form-control" value={password} placeholder="Password" onChange={this.onPasswordChange}/>
           </div>
-        <input type="submit" className="btn btn-primary" />
-        <div>{error}</div>
+          <input type="submit" className="btn btn-primary" />
+          <div className="alert alert-success" role="alert">
+            {error}
+          </div>
         </div>
           
       </form>
